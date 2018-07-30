@@ -10,6 +10,13 @@
 #import <Foundation/Foundation.h>
 #import <Accelerate/Accelerate.h>
 
+//! Project version number for NVDSP.
+FOUNDATION_EXPORT double NVDSPVersionNumber;
+
+//! Project version string for NVDSP.
+FOUNDATION_EXPORT const unsigned char NVDSPVersionString[];
+
+
 #define MAX_CHANNEL_COUNT 2
 
 @interface NVDSP : NSObject {
@@ -61,3 +68,14 @@
 void c_filterContiguousData(float *data, UInt32 numFrames, UInt32 channel,float realTimeCoeffs[5],float *gInputKeepBuffer[2],float *gOutputKeepBuffer[2]);
 
 
+#import <NVDSP/NVClippingDetection.h>
+#import <NVDSP/NVSoundLevelMeter.h>
+#import <NVDSP/NVBandpassFilter.h>
+#import <NVDSP/NVLowShelvingFilter.h>
+#import <NVDSP/NVPeakingEQFilter.h>
+#import <NVDSP/NVNotchFilter.h>
+#import <NVDSP/NVHighpassFilter.h>
+#import <NVDSP/NVBandpassQPeakGainFilter.h>
+#import <NVDSP/NVHighShelvingFilter.h>
+#import <NVDSP/NVLowpassFilter.h>
+#import <NVDSP/NVAllpassFilter.h>
