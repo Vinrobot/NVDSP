@@ -28,16 +28,16 @@ FOUNDATION_EXPORT const unsigned char NVDSPVersionString[];
     float *gOutputKeepBuffer[2];
 
     float omega, omegaS, omegaC, alpha;
- 
+
     float realTimeCoeffs[5];
- 
+
     float a0, a1, a2, b0, b1, b2;
-    
+
     int coeffsCopied;
-    
+
 @public
     float userCoeffs[5];
-    
+
 }
 
 - (id) initWithSamplingRate:(float)sr;
@@ -65,17 +65,3 @@ FOUNDATION_EXPORT const unsigned char NVDSPVersionString[];
 
 @end
 
-void c_filterContiguousData(float *data, UInt32 numFrames, UInt32 channel,float realTimeCoeffs[5],float *gInputKeepBuffer[2],float *gOutputKeepBuffer[2]);
-
-
-#import <NVDSP/NVClippingDetection.h>
-#import <NVDSP/NVSoundLevelMeter.h>
-#import <NVDSP/NVBandpassFilter.h>
-#import <NVDSP/NVLowShelvingFilter.h>
-#import <NVDSP/NVPeakingEQFilter.h>
-#import <NVDSP/NVNotchFilter.h>
-#import <NVDSP/NVHighpassFilter.h>
-#import <NVDSP/NVBandpassQPeakGainFilter.h>
-#import <NVDSP/NVHighShelvingFilter.h>
-#import <NVDSP/NVLowpassFilter.h>
-#import <NVDSP/NVAllpassFilter.h>

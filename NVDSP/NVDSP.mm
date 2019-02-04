@@ -184,27 +184,3 @@
 }
 
 @end
-
-
-void c_filterContiguousData(float *data, UInt32 numFrames, UInt32 channel,float realTimeCoeffs[5],float *gInputKeepBuffer[2],float *gOutputKeepBuffer[2]){
-    
-    // Provide buffer for processing
-    float tInputBuffer[numFrames + 2];
-    float tOutputBuffer[numFrames + 2];
-    
-    // Copy the data
-    memcpy(tInputBuffer, gInputKeepBuffer[channel], 2 * sizeof(float));
-    memcpy(tOutputBuffer, gOutputKeepBuffer[channel], 2 * sizeof(float));
-    memcpy(&(tInputBuffer[2]), data, numFrames * sizeof(float));
-    
-    // Do the processing
-    vDSP_deq22(tInputBuffer, 1, realTimeCoeffs, tOutputBuffer, 1, numFrames);
-    
-    // Copy the data
-    memcpy(data, tOutputBuffer + 2, numFrames * sizeof(float));
-    memcpy(gInputKeepBuffer[channel], &(tInputBuffer[numFrames]), 2 * sizeof(float));
-    memcpy(gOutputKeepBuffer[channel], &(tOutputBuffer[numFrames]), 2 * sizeof(float));
-}
-
-
-
